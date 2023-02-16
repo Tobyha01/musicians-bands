@@ -12,7 +12,7 @@ We will be working on this across multiple days. **You should complete part 1 on
 ## Part 1: Database Creation
 
 ### Installing Dependencies and Running Tests
-1. Once the forked repository has been cloned, make sure to run `npm install`. This will install all dependencies. 
+1. Once the forked repository has been cloned, make sure to run `npm install`. This will install all dependencies.
 2. Additionally, you’ll need to create the following file in the root of the project: `db.sqlite`. This database file is considered sensitive in nature, so it will not be pushed up to a repository when the project is pushed.
 3. To run the tests, run `npm test`. The test file is created, but each test is currently empty. Initially, you’ll get many errors and messages like `Test suite failed to run since there are missing parts`. Let’s get to that!
 
