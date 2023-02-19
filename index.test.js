@@ -20,6 +20,29 @@ describe('Band and Musician Models', () => {
         expect(testBand.showCount).toBe(1);
     })
 
+    test('can create a Musician', async function () {
+        // TODO - test creating a musician
+        const musician1 = await Musician.create({name: "Steve", instrument: "Drums", /* createdAt: false */})
+        const musician2 = await Musician.create({name: "Bob", instrument: "Piano"})
+        expect(musician1.name).toBe("Steve");
+        expect(musician2.name).toBe("Bob");
+        expect(musician1.instrument).toBe("Drums");
+        expect(musician2.instrument).toBe("Piano");
+    })
+
+    test("can add many musicians to one band", async function() {
+        const band = await Band.findByPk(1)
+        await band.addMusicians([1,2])
+        const musicians = await band.getMusicians([1,2])
+        // expect(musicians[0]).toEqual({id: 1, name: "Steve", instrument: "Drums", bandId: 1})
+        expect(musicians[0].name).toBe("Steve")
+        expect(musicians[1].name).toBe("Bob")
+        expect(musicians[0].instrument).toBe("Drums")
+        expect(musicians[1].instrument).toBe("Piano")
+        expect(musicians[0].bandId).toBe(1)
+        expect(musicians[1].bandId).toBe(1)
+    })
+
     test("can update a Band", async function () {
         await Band.update({name: "U2", genre: "Pop", showCount: 2}, {where: {name: "ACDC", genre: "Rock", showCount: 1}})
         const updateBand = await Band.findAll({where: {name: "U2", genre:"Pop", showCount: 2}})
@@ -34,12 +57,6 @@ describe('Band and Musician Models', () => {
         expect(deleteBand).not.toBe({name: "U2", genre: "Pop", showCount: 2})
     })
 
-    test('can create a Musician', async function () {
-        // TODO - test creating a musician
-        const testMusician = await Musician.create({name: "Steve", instrument: "Drums"})
-        expect(testMusician.name).toBe("Steve");
-        expect(testMusician.instrument).toBe("Drums");
-    })
     
     test("can update a Musician", async function () {
         await Musician.update({name: "Garry", instrument: "Guitar"}, {where: {name: "Steve", instrument: "Drums"}})
