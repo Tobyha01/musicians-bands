@@ -14,10 +14,14 @@ describe('Band and Musician Models', () => {
 
     test('can create a Band', async function () {
         // TODO - test creating a band
-        const testBand = await Band.create({name: "ACDC", genre: "Rock", showCount: 1})
-        expect(testBand.name).toBe("ACDC");
-        expect(testBand.genre).toBe("Rock");
-        expect(testBand.showCount).toBe(1);
+        const band1 = await Band.create({name: "ACDC", genre: "Rock", showCount: 1})
+        const band2 = await Band.create({name: "ABBA", genre: "Pop", showCount: 2})
+        expect(band1.name).toBe("ACDC");
+        expect(band2.name).toBe("ABBA");
+        expect(band1.genre).toBe("Rock");
+        expect(band2.genre).toBe("Pop");
+        expect(band1.showCount).toBe(1);
+        expect(band2.showCount).toBe(2);
     })
 
     test('can create a Musician', async function () {
