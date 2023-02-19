@@ -35,10 +35,13 @@ describe('Band and Musician Models', () => {
     })
 
     test("can create a song", async function() {
-        const song = await Song.create({title: "song1", year: 2023})
+        const song1 = await Song.create({title: "song1", year: 2023})
+        const song2 = await Song.create({title: "song2", year: 2023})
         console.log("song")
-        expect(song.title).toBe("song1")
-        expect(song.year).toBe(2023)
+        expect(song1.title).toBe("song1")
+        expect(song2.title).toBe("song2")
+        expect(song1.year).toBe(2023)
+        expect(song2.year).toBe(2023)
         // expect(song).toHaveProperty({title: "song1", year: 2023})
     })
 
