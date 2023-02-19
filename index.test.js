@@ -85,15 +85,15 @@ describe('Band and Musician Models', () => {
         expect(updateMusician[0].instrument).toBe("Guitar")
     })
     
-    // test("can delete a Musician", async function () {
-    //     await Musician.destroy({where: {name: "Garry", instrument: "Guitar"}})
-    //     const deleteMusician = await Musician.findAll({where: {name: "Garry", instrument: "Guitar"}})
-    //     expect(deleteMusician).not.toBe({name: "Garry", instrument: "Guitar"})
-    // })
+    test("can delete a Musician", async function () {
+        await Musician.destroy({where: {name: "Garry", instrument: "Guitar"}})
+        const deleteMusician = await Musician.findAll({where: {name: "Garry", instrument: "Guitar"}})
+        expect(deleteMusician).not.toBe({name: "Garry", instrument: "Guitar"})
+    })
 
-    // test("can delete a Band", async function () {
-    //     await Band.destroy({where: {name: "U2", genre: "Pop", showCount: 2}})
-    //     const deleteBand = await Band.findAll({where: {name: "U2", genre: "Pop", showCount: 2}})
-    //     expect(deleteBand).not.toBe({name: "U2", genre: "Pop", showCount: 2})
-    // })
+    test("can delete a Band", async function () {
+        await Band.destroy({where: {name: "U2", genre: "Pop", showCount: 2}})
+        const deleteBand = await Band.findAll({where: {name: "U2", genre: "Pop", showCount: 2}})
+        expect(deleteBand).not.toBe({name: "U2", genre: "Pop", showCount: 2})
+    })
 })
