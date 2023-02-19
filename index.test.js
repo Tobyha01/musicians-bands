@@ -1,5 +1,5 @@
 const {sequelize} = require('./db');
-const {Band, Musician} = require('./index')
+const {Band, Musician, Song} = require('./index')
 
 describe('Band and Musician Models', () => {
     /**
@@ -28,6 +28,14 @@ describe('Band and Musician Models', () => {
         expect(musician2.name).toBe("Bob");
         expect(musician1.instrument).toBe("Drums");
         expect(musician2.instrument).toBe("Piano");
+    })
+
+    test("can create a song", async function() {
+        const song = await Song.create({title: "song1", year: 2023})
+        console.log("song")
+        expect(song.title).toBe("song1")
+        expect(song.year).toBe(2023)
+        // expect(song).toHaveProperty({title: "song1", year: 2023})
     })
 
     test("can add many musicians to one band", async function() {
